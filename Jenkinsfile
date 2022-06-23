@@ -31,7 +31,6 @@ pipeline{
             steps {
                 sh 'docker push mayuryes99/opstree-task:${VERSION}'
 		sh 'docker rmi mayuryes99/opstree-task:${VERSION}'
-		sh 'docker run -d -p 49160:8080 mayuryes99/opstree-task:${VERSION}'
             }
         }
     }
