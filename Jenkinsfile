@@ -19,7 +19,11 @@ pipeline{
         stage('Login') {
 
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                script{withCredentials([string(credentialsId: 'dockerhub-pass', variable: 'docker_password')]) {
+                    sh 'docker login -u mayuryes99 -p $docker_password'
+                        }           
+
+                    }
             }
         }
 
@@ -36,5 +40,4 @@ pipeline{
             sh 'docker logout'
         }
     }
-
 }
