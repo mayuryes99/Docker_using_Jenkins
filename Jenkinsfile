@@ -3,7 +3,6 @@ pipeline{
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred')
         VERSION = "${env.BUILD_ID}"
     }
 
